@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리 반 자리 배치기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>우리 반 자리 배치기 🏫</h1>
+            <p>학생 명단을 확인하고 자리 뽑기 버튼을 눌러주세요!</p>
+        </header>
+        <main>
+            <aside class="controls">
+                <h3>학생 명단 (최대 30명)</h3>
+                <p>학생 이름이나 번호를 줄바꿈으로 구분해서 입력하세요.</p>
+                <textarea id="studentList"></textarea>
+                <button id="shuffleBtn">🎲 자리 뽑기!</button>
+            </aside>
+            
+            <section class="classroom">
+                <div class="teacher-desk">교 탁</div>
+                <div class="seats-grid" id="seatsGrid">
+                    </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
