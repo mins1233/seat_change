@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전문적인 좌석 배치 프로그램</title>
+    <title>전문적인 좌석 배치 프로그램 (스마트 맞춤형)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,12 +14,33 @@
 <div class="slide-container">
     <div class="sidebar">
         <h1>Seat Master</h1>
-        <p>학생 명단을 입력하고 버튼을 눌러주세요. 명단이 부족하면 자동으로 공석 처리됩니다.</p>
+        <p>우리 반에 맞게 조건을 설정하고 배치하세요.</p>
         
-        <textarea id="studentList" placeholder="한 줄에 한 명씩 입력하세요."></textarea>
+        <div class="input-group">
+            <label>교실 크기 (가로 열 × 세로 행)</label>
+            <div class="row-flex">
+                <input type="number" id="colCount" value="6" min="2" max="10"> 열 × 
+                <input type="number" id="rowCount" value="5" min="2" max="10"> 행
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>📌 고정석 (학생, 행, 열)</label>
+            <textarea id="fixedList" placeholder="예시: 홍길동, 1, 1&#10;예시: 김철수, 5, 6"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>⚡ 띄어 앉기 (학생1, 학생2)</label>
+            <textarea id="separatedList" placeholder="예시: 이영희, 박민수"></textarea>
+        </div>
+
+        <div class="input-group" style="flex-grow: 1; display: flex; flex-direction: column;">
+            <label>전체 학생 명단</label>
+            <textarea id="studentList" placeholder="한 줄에 한 명씩 입력하세요."></textarea>
+        </div>
         
         <div class="btn-group">
-            <button id="shuffleBtn"><i class="fa-solid fa-dice"></i> 랜덤 배치 시작</button>
+            <button id="shuffleBtn">🎲 랜덤 맞춤 배치 시작</button>
         </div>
     </div>
 
@@ -29,10 +49,6 @@
         
         <div class="seats-grid" id="seatsGrid">
             </div>
-
-        <div class="footer-info">
-            © 2024 Classroom Management System | Professional Edition
-        </div>
     </div>
 </div>
 
