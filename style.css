@@ -1,153 +1,175 @@
-/* 기본 스타일 초기화 */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* 기본 설정 및 슬라이드 컨테이너 */
+* { box-sizing: border-box; }
 body {
-    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
-    background-color: #f0f4f8;
-    color: #333;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-header h1 {
-    color: #2c3e50;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-main {
-    display: flex;
-    gap: 30px;
-}
-
-/* 컨트롤 영역 (왼쪽) */
-.controls {
-    flex: 1;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.controls h3 {
-    margin-bottom: 10px;
-    color: #34495e;
-}
-
-.controls p {
-    font-size: 13px;
-    color: #7f8c8d;
-    margin-bottom: 15px;
-}
-
-textarea {
-    width: 100%;
-    height: 400px;
-    padding: 15px;
-    border: 2px solid #e0e6ed;
-    border-radius: 8px;
-    resize: none;
-    font-size: 15px;
-    line-height: 1.5;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-textarea:focus {
-    border-color: #3498db;
-}
-
-button {
-    width: 100%;
-    padding: 18px;
-    margin-top: 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-/* 교실 영역 (오른쪽) */
-.classroom {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.teacher-desk {
-    width: 200px;
-    padding: 15px;
-    background-color: #7f8c8d;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    font-size: 18px;
-    border-radius: 8px;
-    margin-bottom: 40px;
-}
-
-/* 6칸 격자 (2분단씩 떨어뜨리기 위해 margin 적용) */
-.seats-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 15px;
-    width: 100%;
-    max-width: 650px;
-}
-
-.seat {
-    background-color: #e3f2fd;
-    border: 2px solid #bbdefb;
-    border-radius: 8px;
-    height: 65px;
+    background-color: #e2e8f0;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-    font-size: 16px;
-    color: #1565c0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    min-height: 100vh;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
-/* 분단을 나누기 위해 2번째, 4번째 자리 오른쪽에 간격 추가 */
-.seat:nth-child(6n+2), 
-.seat:nth-child(6n+4) {
-    margin-right: 20px;
+.slide-container {
+    width: 1280px;
+    height: 720px;
+    background-color: #f3f0df; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
 }
+
+/* 배경 장식 */
+.slide-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 10px;
+    background: #005088; 
+    z-index: 10;
+}
+
+/* 왼쪽 제어창 (Sidebar) */
+.sidebar {
+    width: 320px;
+    background-color: #005088;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    z-index: 5;
+}
+
+.sidebar h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    margin: 0 0 10px 0;
+    color: #11caa0;
+}
+
+.sidebar p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+textarea {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    color: white;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+}
+
+.btn-group {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+#shuffleBtn {
+    background-color: #11caa0;
+    color: #005088;
+}
+
+#shuffleBtn:hover {
+    background-color: #fff;
+    transform: translateY(-2px);
+}
+
+/* 오른쪽 메인 교실 영역 */
+.main-classroom {
+    flex-grow: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.teacher-desk {
+    width: 240px;
+    height: 60px;
+    background-color: #005088;
+    color: #f3f0df;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 좌석 그리드 설정 */
+.seats-grid {
+    display: grid;
+    /* 6열 구성 */
+    grid-template-columns: repeat(6, 110px); 
+    /* 5행 구성 */
+    grid-template-rows: repeat(5, 80px);
+    gap: 15px;
+    justify-content: center;
+}
+
+/* 좌석 스타일 - 크기 고정 */
+.seat {
+    width: 110px;
+    height: 80px;
+    background-color: white;
+    border: 1px solid #cdd6e2;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #005088;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    padding: 5px;
+    word-break: keep-all;
+}
+
+/* 분단 띄우기 (2-2-2 배치) */
+/* 2번째 열과 3번째 열 사이, 4번째 열과 5번째 열 사이 간격 */
+.seat:nth-child(6n+2) { margin-right: 40px; }
+.seat:nth-child(6n+4) { margin-right: 40px; }
 
 .seat.empty {
-    background-color: #f5f6fa;
-    border: 2px dashed #dcdde1;
-    color: #a4b0be;
+    background-color: rgba(0, 80, 136, 0.05);
+    border: 1px dashed #cdd6e2;
+    color: #cdd6e2;
     box-shadow: none;
+}
+
+/* 하단 정보 */
+.footer-info {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-size: 12px;
+    color: #005088;
+    opacity: 0.5;
 }
